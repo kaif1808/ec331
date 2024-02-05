@@ -116,3 +116,41 @@ causeSummary(profitppi[1:290,])
 causeSummBlk(profitppi[1:290,])
 causeSummary(profitppi[291:300,])
  
+cnd=fredImport(query="CPIAUCSL", file = "tempfile",
+               source = "http://research.stlouisfed.org/fred2/series/",
+               save = FALSE, sep = ";", try = TRUE)
+cnd2=ts(data.frame(cnd@data)$CPIAUCSL,
+        start=c(1947,1),frequency = 12)
+head(cnd2)
+tail(cnd2)
+cpiq=m2q(cnd2)$quar
+head(cpiq)
+tail(cpiq)
+cpi=ts(cpiq, frequency = 4,
+       start = c(1947, 1))
+head(cpi)
+tail(cpi)
+profitcpi=ts.intersect(profit,cpi)
+
+profit1=profitcpi[,1]
+cpi1=profitcpi[,2]
+length(profit1)
+length(cpi1)
+head(profitcpi)
+apply(profitcpi,2,mean)
+profit2=profit*6800
+#profit data units changed for graphics
+ts.plot(cbind(profit2,cpi1), main="Quarterly profits (solid line)
+and consumer prices (dashed line)", lty=1:2,
+        lwd=2, ylab="profits and inflation")
+
+library(generalCorr)
+options(np.messages=FALSE)
+c1=causeSummary2(profitcpi[291:300,])
+c2=causeSummary2(profitppi[291:300,])
+c3=causeSum2Blk(profitcpi)
+c4=causeSum2Blk(profitppi)
+library(xtable)
+c14=rbind(c1,c2,c3,c4)
+c14
+xtable(c14)
