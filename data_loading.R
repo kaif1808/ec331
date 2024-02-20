@@ -15,3 +15,7 @@ library(ggfortify)
 
 cpih <- ons_get("cpih01")
 inf_exp <- fread("inflation_expectations.csv")
+
+#refinitiv api
+Eikon <- EikonConnect(Eikonapplication_id = "93ee18c61e184f099ce9039349b9becdf8585721", PythonModule = "JSON")
+RD <- RDConnect(application_id = "93ee18c61e184f099ce9039349b9becdf8585721", PythonModule = "JSON")
