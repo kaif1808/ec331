@@ -17,6 +17,7 @@ agg_cpih <- agg_cpih %>%
 agg_cpih <- agg_cpih[c("date", "val")]
 
 cpih.ts<-ts(agg_cpih[,2], start=c(2005,1), end=c(2024,1), frequency=12)
+source("monthly_quarterly.R")
 cpih.ts=m2q(cpih.ts)$quar
 head(cpih.ts)
 tail(cpih.ts)
@@ -41,3 +42,6 @@ exp.ts <- ts(inf_exp, start = c(1999,4), frequency = 4)
 
 ggplot(agg_cpih, aes(x = date, y=val)) + geom_line() + labs(x="Date", y="CPIH",
                   title = "CPIH between Jan-05 and Feb-24") + theme_minimal()
+
+profits <- fread("uk_profits.csv")
+profits.ts <- ts(profits, start = c(2005,1 ), frequency = 4)
