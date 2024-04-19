@@ -8,9 +8,9 @@ agg_cpih <- agg_cpih[c("date", "val")]
 cpih_xts <- xts(agg_cpih$val, order.by=agg_cpih$date)
 cpih_xts <- apply.quarterly(cpih_xts, mean)
 
-cpih_xts <- cpih_xts['2005-03-01/2023-12-01']
-cpih.ts <- ts(cpih_xts, frequency = 4, start = c(2004 , 4))
-
+cpih_xts <- cpih_xts['2005-03-01/2023-06-01']
+cpih.ts <- ts(cpih_xts, frequency = 4, start = c(2005 , 1))
+dP <- diff(log(cpih.ts))
 
 
 #agg_cpih <- agg_cpih %>%

@@ -1,0 +1,10 @@
+dPi <- diff(log(ts(profits$pnfc_gror, start = c(2005, 1), frequency = 4)))
+
+Pi <- ts(profits$pnfc_gror, start = c(2005, 1), frequency = 4)
+#ukcs_gror.ts <- ts(profits$ukcs_gror, start = c(2005, 1), frequency = 4)
+#nukcs_pnfc_gror.ts <- ts(profits$nukcs_pnfc_gror, start = c(2005, 1), frequency = 4)
+#serv_pnfc_gror.ts <- ts(profits$serv_pnfc_gror, start = c(2005, 1), frequency = 4)
+#manu_pnfc_gror.ts <- ts(profits$manu_pnfc_gror, start = c(2005, 1), frequency = 4)
+#profits.ts <- ts.union(serv_pnfc_gror.ts, manu_pnfc_gror.ts, nukcs_pnfc_gror.ts, ukcs_gror.ts, pnfc_gror.ts)
+#rm(list = c("pnfc_gror.ts", "ukcs_gror.ts", "nukcs_pnfc_gror.ts", "manu_pnfc_gror.ts", "serv_pnfc_gror.ts"))
+#dPi <- diff(log(profits.ts))

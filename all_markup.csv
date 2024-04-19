@@ -1,4 +1,4 @@
-﻿Industry Group,year,Turnover £000s,mean IC markup,standard deviation,p10 IC markup,p25 IC markup,p50 IC markup,p75 IC markup,p90 IC markup
+IndustryGroup,year,Turnover,meanMarkup,sd,p10mk,p25mk,p50mk ,p75mk,p90mk
 ALL,1997,1721184500,1.105,0.484,0.787,0.914,1.001,1.156,1.465
 ALL,1998,1767279500,1.117,0.516,0.786,0.905,1.017,1.176,1.458
 ALL,1999,1767737500,1.143,0.55,0.789,0.909,1.017,1.198,1.547

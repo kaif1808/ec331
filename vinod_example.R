@@ -130,7 +130,7 @@ cpi=ts(cpiq, frequency = 4,
        start = c(1947, 1))
 head(cpi)
 tail(cpi)
-profitcpi=ts.intersect(profit,cpi)
+profitcpi=ts.intersect(Pi,cpih.ts)
 
 profit1=profitcpi[,1]
 cpi1=profitcpi[,2]
@@ -138,19 +138,20 @@ length(profit1)
 length(cpi1)
 head(profitcpi)
 apply(profitcpi,2,mean)
-profit2=profit*6800
+Pi2=Pi/775
 #profit data units changed for graphics
-ts.plot(cbind(profit2,cpi1), main="Quarterly profits (solid line)
-and consumer prices (dashed line)", lty=1:2,
+ts.plot(cbind(Pi2, cpih.ts), main="Quarterly profits (solid line) and consumer prices (dashed line)", lty=1:2,
         lwd=2, ylab="profits and inflation")
 
 library(generalCorr)
 options(np.messages=FALSE)
-c1=causeSummary2(profitcpi[291:300,])
-c2=causeSummary2(profitppi[291:300,])
-c3=causeSum2Blk(profitcpi)
-c4=causeSum2Blk(profitppi)
+c1=causeSummary(profitcpi)
+c2=causeSummary2(profitcpi[64:74,])
+c3=causeSummBlk(profitcpi)
+c4=causeSummBlk(profitcpi [64:74,])
 library(xtable)
-c14=rbind(c1,c2,c3,c4)
+c14=rbind(c1,c2)
 c14
 xtable(c14)
+c1=causeSummBlk(profitcpi)
+c2=causeSummBlk(profitcpi [64:74,])

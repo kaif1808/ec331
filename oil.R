@@ -10,3 +10,4 @@ oil_xts <- apply.quarterly(oil_xts, mean)
 
 oil.ts=ts(oil_xts, frequency = 4,
            start = c(2004, 4))
+dX <- diff(log(oil.ts))
