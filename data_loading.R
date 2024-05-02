@@ -19,6 +19,19 @@ library(gridExtra)
 
 rm(list = ls())
 
+uk_firm <- as.data.table(fread("uk_firm_data.csv", dec = ".", sep = ",", colClasses = list(character = "uksic")))
+uk_firm$date <- as.numeric(format(as.Date(uk_firm$date, format="%d/%m/%Y"),"%Y"))
+cols_to_convert <- c("cogs", "adminexp", "interestpaid", "numemp", "rent", "rd", "totopren", "hireplant", "intanassets", "div", "capinv", "turnover")
+uk_add <- as.data.table(read_csv("additional_data.csv"))
+uk_add$date <- as.numeric(format(as.Date(uk_add$date, format="%d/%m/%Y"),"%Y"))
+# Merge uk_firm with uk_add based on 'rnum' (character) and 'date' (numeric)
+uk_firm <- merge(uk_firm, uk_add, by = c("rnum", "date"), all.x = TRUE)
+rm(uk_add)
+
+head(uk_firm %>% group_by(date) %>% summarize(n = n()))
+
+
+
 #cpih data preparation
 cpih <- ons_get("cpih01")
 source("cpih.R")
